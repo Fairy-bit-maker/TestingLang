@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kolehiyo ng Lungsod ng Lipa - Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+</head>
+<body>
+    <!-- Login Page -->
+    <section id="login-section">
+        <div class="login-container">
+            <h2>Login - CCS Department</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <p id="login-error-message" style="color: red; display: none;">Invalid username or password!</p>
+        </div>
+    </section>
+
+    <!-- Dashboard Page (hidden initially) -->
+    <section id="dashboard-section" style="display: none;">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="logo.jpg" alt="Kolehiyo ng Lungsod ng Lipa Logo">
+                    <h1>Kolehiyo ng Lungsod ng Lipa - CCS Department</h1>
+                </div>
+                <ul>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="welcome">
+            <div class="container">
+                <h2>Welcome to Your Portal</h2>
+                <p>Access your student information, grades, and more.</p>
+            </div>
+        </section>
+        <section class="dashboard">
+            <div class="container">
+                <h3>Your Dashboard</h3>
+                <div class="cards">
+                    <div class="card">
+                        <h4>Your Profile</h4>
+                        <button onclick="openModal('profile-modal')">View Profile</button>
+                    </div>
+                    <div class="card">
+                        <h4>Enrolled Courses</h4>
+                        <button onclick="openModal('courses-modal')">View Courses</button>
+                    </div>
+                    <div class="card">
+                        <h4>View Grades</h4>
+                        <button onclick="openModal('grades-modal')">View Grades</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Kolehiyo ng Lungsod ng Lipa. All rights reserved.</p>
+        </footer>
+    </section>
+    
+<!-- Profile Modal -->
+<div id="profile-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('profile-modal')">&times;</span>
+        <h2>Student Profile</h2>
+        <div class="profile-info" style="margin-top: 20px; display: flex; flex-wrap: wrap;">
+            <!-- Left Side (Profile Info) -->
+            <div class="profile-left" style="flex: 1; padding-right: 20px; max-width: 50%;">
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <div style="width: 100px; height: 100px; background-color: rgb(255, 46, 46); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; margin-right: 20px;">JS</div>
+                    <div>
+                        <h3 style="margin: 0; color: #333;">Juan Santos</h3>
+                        <p style="margin: 5px 0; color: #666;">Student ID: 2023-00123</p>
+                        <p style="margin: 5px 0; color: #666;">BS Information Technology</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Side (Profile Form) -->
+            <div class="profile-right" style="flex: 1; max-width: 50%;">
+                <div class="input-group">
+                    <label for="profile-email">Email Address:</label>
+                    <input type="email" id="profile-email" value="juan.santos@student.kll.edu.ph" readonly>
+                </div>
+                <div class="input-group">
+                    <label for="profile-phone">Contact Number:</label>
+                    <input type="tel" id="profile-phone" value="09123456789" readonly>
+                </div>
+                <div class="input-group">
+                    <label for="profile-address">Address:</label>
+                    <input type="text" id="profile-address" value="123 Main St., Lipa City, Batangas" readonly>
+                </div>
+                <div class="input-group">
+                    <label for="profile-guardian">Guardian Name:</label>
+                    <input type="text" id="profile-guardian" value="Maria Santos" readonly>
+                </div>
+                <div class="input-group">
+                    <label for="profile-guardian-contact">Guardian Contact:</label>
+                    <input type="tel" id="profile-guardian-contact" value="09987654321" readonly>
+                </div>
+            </div>
+        </div>
+        <button style="margin-top: 15px;" onclick="closeModal('profile-modal')">Close</button>
+    </div>
+</div>
+
+    <!-- Courses Modal -->
+    <div id="courses-modal" class="modal">
+        <div class="modal-content" style="width: 600px;">
+            <span class="close-btn" onclick="closeModal('courses-modal')">&times;</span>
+            <h2>Enrolled Courses</h2>
+            <div style="margin-top: 20px; text-align: left;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 10px; border-bottom: 1px solid #ddd; text-align: left;">Course Code</th>
+                            <th style="padding: 10px; border-bottom: 1px solid #ddd; text-align: left;">Course Title</th>
+                            <th style="padding: 10px; border-bottom: 1px solid #ddd; text-align: left;">Schedule</th>
+                            <th style="padding: 10px; border-bottom: 1px solid #ddd; text-align: left;">Units</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">IT101</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Introduction to Computing</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">MWF 8:00-9:30 AM</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">3</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">IT102</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Programming Fundamentals</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">TTH 10:00-11:30 AM</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">3</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">GE101</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Communication Skills</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">MWF 1:00-2:30 PM</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">3</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">MATH101</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">College Algebra</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">TTH 1:00-2:30 PM</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">3</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">PE101</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Physical Education 1</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">F 3:00-5:00 PM</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">2</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top: 15px; text-align: right;">
+                    <p><strong>Total Units:</strong> 14</p>
+                </div>
+                <button style="margin-top: 15px;" onclick="closeModal('courses-modal')">Close</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Grades Modal -->
+    <div id="grades-modal" class="modal">
+        <div class="modal-content" style="width: 600px;">
+            <span class="close-btn" onclick="closeModal('grades-modal')">&times;</span>
+            <h2>Student Grades</h2>
+            <div style="margin-top: 20px; text-align: left;">
+                <h4 style="margin-bottom: 10px;">Academic Year 2024-2025, 1st Semester</h4>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 10px; border-bottom: 1px solid #ddd; text-align: left;">Course Code</th>
+                            <th style="padding: 10px; border-bottom: 1px solid #ddd; text-align: left;">Course Title</th>
+                            <th style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">Midterm</th>
+                            <th style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">Final</th>
+                            <th style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">IT101</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Introduction to Computing</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">88</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">92</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center; font-weight: bold; color: rgb(255, 46, 46);">90</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">IT102</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Programming Fundamentals</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">85</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">83</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center; font-weight: bold; color: rgb(255, 46, 46);">84</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">GE101</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Communication Skills</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">78</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">82</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center; font-weight: bold; color: rgb(255, 46, 46);">80</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">MATH101</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">College Algebra</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">76</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">80</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center; font-weight: bold; color: rgb(255, 46, 46);">78</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">PE101</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Physical Education 1</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">90</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center;">95</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd; text-align: center; font-weight: bold; color: rgb(255, 46, 46);">92</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top: 15px; background-color: #f0f0f0; padding: 15px; border-radius: 5px;">
+                    <p><strong>GPA:</strong> 3.45</p>
+                    <p><strong>Academic Standing:</strong> Good Standing</p>
+                </div>
+                <button style="margin-top: 15px;" onclick="closeModal('grades-modal')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple login validation and redirect
+        const validUsername = 'student';
+        const validPassword = 'password123';
+
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simple username and password validation
+            if (username === validUsername && password === validPassword) {
+                // Hide the login page and show the dashboard
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('dashboard-section').style.display = 'block';
+            } else {
+                // Show error message for invalid login
+                document.getElementById('login-error-message').style.display = 'block';
+            }
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Logout functionality
+        function logout() {
+            // Show the login page again
+            document.getElementById('login-section').style.display = 'flex';
+            document.getElementById('dashboard-section').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
